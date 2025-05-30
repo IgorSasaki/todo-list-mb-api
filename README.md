@@ -1,94 +1,115 @@
-# 📘 To-Do List API – Mentes Brilhantes (Etapa 1)
+# 🧠 To-Do List API – Mentes Brilhantes (MVC)
 
-Este repositório contém a base inicial de uma API REST utilizando **Node.js** e **Express.js** para o gerenciamento de tarefas. Esta é a **Etapa 1** do projeto desenvolvido com os alunos do programa **Mentes Brilhantes**.
-
----
-
-## 🚀 O que foi implementado até agora
-
-- Configuração do projeto com Node.js e Express
-- Criação de um servidor básico
-- Implementação da primeira rota `GET /`
-- Resposta simples confirmando que a API está rodando
+Este repositório contém a API RESTful do projeto **To-Do List** desenvolvida com **Node.js**, **Express**, **SQLite** e **TypeORM**, estruturada no padrão **MVC (Model-View-Controller)**. Este projeto faz parte do curso de backend do programa **Mentes Brilhantes**.
 
 ---
 
-## 📁 Estrutura atual do projeto
+## 📁 Estrutura do Projeto (MVC)
 
 ```
-todo-list-mb-api/
-├── node_modules/
-├── src/
-│   └── index.js          # Arquivo principal do servidor
-├── package.json
-└── README.md
+src/
+├── config/
+│   └── data-source.js       # Configuração da conexão com o banco (Model)
+├── controllers/
+│   └── TaskController.js    # Lógica das requisições (Controller)
+├── entities/
+│   └── Task.js              # Definição da entidade Task (Model)
+├── routes/
+│   └── task.routes.js       # Endpoints da aplicação (View)
+├── index.js                 # Arquivo principal da aplicação
 ```
 
 ---
 
-## 📦 Tecnologias utilizadas
+## 🚀 Funcionalidades
 
-- [Node.js](https://nodejs.org/)
-- [Express.js](https://expressjs.com/)
+- `GET /tasks` → Lista todas as tarefas
+- `POST /tasks` → Cria uma nova tarefa
 
 ---
 
-## ▶️ Como executar o projeto
+## 🧰 Tecnologias Utilizadas
 
-1. **Clone o repositório:**
+- Node.js
+- Express
+- SQLite
+- TypeORM
+- Reflect-metadata
+- Nodemon (para desenvolvimento)
+
+---
+
+## ▶️ Como Executar
+
+1. Clone o repositório:
 
 ```bash
-git clone https://github.com/seu-usuario/todo-list-mb-api.git
+git clone https://github.com/IgorSasaki/todo-list-mb-api.git
 cd todo-list-mb-api
 ```
 
-2. **Instale as dependências:**
+2. Instale as dependências:
 
 ```bash
 npm install
 ```
 
-3. **Execute o servidor:**
+3. Inicie o banco de dados e a aplicação com:
 
 ```bash
-node src/index.js
-```
-
-4. **Abra no navegador ou use o Postman para testar:**
-
-```
-GET http://localhost:3333/
-```
-
-Você verá a mensagem:
-
-```
-API rodando!
+npm run dev
 ```
 
 ---
 
-## 🧠 Conceitos aprendidos até aqui
+## 🔗 Rotas da API
 
-- O que é o **Express** e por que usamos ele para criar APIs
-- Como iniciar um servidor com `express()` e `app.listen()`
-- O que é uma rota HTTP
-- O que é um middleware e como `express.json()` permite ler `req.body`
-- Diferença entre frontend e backend
+### `GET /tasks`
+
+- Retorna todas as tarefas cadastradas
+- Exemplo de resposta:
+
+```json
+[
+  {
+    "id": 1,
+    "title": "Estudar Node.js",
+    "description": "Ler documentação do Express"
+  }
+]
+```
+
+### `POST /tasks`
+
+- Cria uma nova tarefa
+- Corpo da requisição (JSON):
+
+```json
+{
+  "title": "Nova tarefa",
+  "description": "Detalhes da tarefa"
+}
+```
 
 ---
 
-## 📎 Próximos passos
+## 📦 Banco de Dados
 
-- Criar rota `POST /tasks` para adicionar novas tarefas
-- Armazenar tarefas em memória com um array
-- Listar tarefas com `GET /tasks`
-- Trabalhar com `req.body` e códigos de status HTTP
+- Utiliza **SQLite** como banco leve e local
+- A base `todo.sqlite` é gerada automaticamente no primeiro uso
+- Gerenciado pelo **TypeORM** com sincronização automática
+
+---
+
+## 📎 Observações
+
+- O projeto está organizado seguindo o padrão MVC para facilitar a separação de responsabilidades e escalabilidade.
+- A persistência está em SQLite, mas pode ser trocada para MySQL ou PostgreSQL com poucas mudanças.
 
 ---
 
 ## 👨‍🏫 Projeto Educacional
 
-Este projeto foi desenvolvido para ensinar fundamentos de backend com Node.js dentro do programa **Mentes Brilhantes**, com foco em jovens iniciantes no mundo da programação.
+Este projeto foi desenvolvido no contexto do curso de backend do programa **Mentes Brilhantes**, com o objetivo de ensinar arquitetura de APIs e boas práticas com Node.js.
 
 ---
