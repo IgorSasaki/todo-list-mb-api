@@ -1,6 +1,17 @@
 # 🧠 To-Do List API – Mentes Brilhantes (MVC)
 
-Este repositório contém a API RESTful do projeto **To-Do List** desenvolvida com **Node.js**, **Express**, **SQLite** e **TypeORM**, estruturada no padrão **MVC (Model-View-Controller)**. Este projeto faz parte do curso de backend do programa **Mentes Brilhantes**.
+Este repositório contém a API RESTful do projeto **To-Do List**, desenvolvida com **Node.js**, **Express**, **SQLite** e **TypeORM**, seguindo o padrão **MVC (Model-View-Controller)**. Este projeto foi construído nas aulas do curso de backend do programa **Mentes Brilhantes – Araraquara/SP**, com foco em ensinar arquitetura de APIs, integração com frontend e boas práticas de desenvolvimento.
+
+---
+
+## ✅ Projeto Concluído
+
+Esta API está 100% funcional e integrada ao frontend da aplicação de Lista de Tarefas.
+
+- Permite criar e listar tarefas
+- Salva dados em banco de dados real (SQLite)
+- Retorna dados formatados em JSON
+- Está pronta para deploy local ou em serviços como Render, Railway, etc.
 
 ---
 
@@ -12,6 +23,8 @@ src/
 │   └── data-source.js       # Configuração da conexão com o banco (Model)
 ├── controllers/
 │   └── TaskController.js    # Lógica das requisições (Controller)
+├── database/
+│   └── todo.sqlite          # Banco de dados SQLite
 ├── entities/
 │   └── Task.js              # Definição da entidade Task (Model)
 ├── routes/
@@ -21,25 +34,26 @@ src/
 
 ---
 
-## 🚀 Funcionalidades
+## 🚀 Funcionalidades da API
 
-- `GET /tasks` → Lista todas as tarefas
-- `POST /tasks` → Cria uma nova tarefa
+- `GET /tasks` → Lista todas as tarefas existentes no banco
+- `POST /tasks` → Cria uma nova tarefa com título e descrição
 
 ---
 
 ## 🧰 Tecnologias Utilizadas
 
-- Node.js
-- Express
-- SQLite
-- TypeORM
+- [Node.js](https://nodejs.org/)
+- [Express](https://expressjs.com/)
+- [SQLite](https://www.sqlite.org/)
+- [TypeORM](https://typeorm.io/)
 - Reflect-metadata
 - Nodemon (para desenvolvimento)
+- CORS (para permitir integração com o frontend)
 
 ---
 
-## ▶️ Como Executar
+## ▶️ Como Executar Localmente
 
 1. Clone o repositório:
 
@@ -54,11 +68,14 @@ cd todo-list-mb-api
 npm install
 ```
 
-3. Inicie o banco de dados e a aplicação com:
+3. Inicie a aplicação com:
 
 ```bash
 npm run dev
 ```
+
+A API estará disponível em:  
+🔗 `http://localhost:3333`
 
 ---
 
@@ -67,14 +84,14 @@ npm run dev
 ### `GET /tasks`
 
 - Retorna todas as tarefas cadastradas
-- Exemplo de resposta:
+- Exemplo:
 
 ```json
 [
   {
     "id": 1,
-    "title": "Estudar Node.js",
-    "description": "Ler documentação do Express"
+    "title": "Estudar React",
+    "description": "Entender useEffect"
   }
 ]
 ```
@@ -82,12 +99,22 @@ npm run dev
 ### `POST /tasks`
 
 - Cria uma nova tarefa
-- Corpo da requisição (JSON):
+- Enviar no corpo da requisição:
 
 ```json
 {
   "title": "Nova tarefa",
-  "description": "Detalhes da tarefa"
+  "description": "Texto da descrição"
+}
+```
+
+- Retorna:
+
+```json
+{
+  "id": 2,
+  "title": "Nova tarefa",
+  "description": "Texto da descrição"
 }
 ```
 
@@ -95,21 +122,26 @@ npm run dev
 
 ## 📦 Banco de Dados
 
-- Utiliza **SQLite** como banco leve e local
-- A base `todo.sqlite` é gerada automaticamente no primeiro uso
-- Gerenciado pelo **TypeORM** com sincronização automática
+- Banco: **SQLite**
+- Arquivo local: `src/database/todo.sqlite`
+- Gerenciado com **TypeORM** (ORM que automatiza criação de tabelas e inserção de dados)
 
 ---
 
-## 📎 Observações
+## 📎 Observações Finais
 
-- O projeto está organizado seguindo o padrão MVC para facilitar a separação de responsabilidades e escalabilidade.
-- A persistência está em SQLite, mas pode ser trocada para MySQL ou PostgreSQL com poucas mudanças.
+- Projeto está concluído e pode ser expandido com:
+  - Rotas `PUT` e `DELETE`
+  - Autenticação com JWT
+  - Integração com PostgreSQL para ambientes de produção
 
 ---
 
 ## 👨‍🏫 Projeto Educacional
 
-Este projeto foi desenvolvido no contexto do curso de backend do programa **Mentes Brilhantes**, com o objetivo de ensinar arquitetura de APIs e boas práticas com Node.js.
+Este projeto foi desenvolvido como parte do curso **Programação e Novas Mídias** do programa **Mentes Brilhantes – Araraquara**, com o objetivo de ensinar os fundamentos da construção de APIs modernas com Node.js.
+
+Professor responsável: **Igor Leonardo Sasaki da Silva Moreira**  
+[LinkedIn](https://www.linkedin.com/in/igor-sasaki) • [GitHub](https://github.com/IgorSasaki)
 
 ---
