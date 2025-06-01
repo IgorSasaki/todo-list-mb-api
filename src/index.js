@@ -1,4 +1,5 @@
 const express = require("express");
+const cors = require("cors");
 const { AppDataSource } = require("./config/data-source");
 const taskRoutes = require("./routes/task.routes");
 
@@ -7,6 +8,11 @@ require("reflect-metadata");
 const app = express();
 const PORT = 3333;
 
+app.use(
+  cors({
+    origin: "*",
+  })
+);
 app.use(express.json());
 
 AppDataSource.initialize()
